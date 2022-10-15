@@ -23,7 +23,7 @@ function Products() {
 
   useEffect(() => {
     console.log(localStorage.getItem("app_token"));
-    axios.get(process.env.REACT_APP_BASE_URL+"/getproductdata",{
+    axios.get(process.env.REACT_APP_BASE_URL+"getproductdata",{
     }).then((res) => 
       setDatas(res.data)
     ).catch((error) =>  {throw new Error(error)} )
@@ -37,7 +37,7 @@ function Products() {
     console.log(selectedItem);
     try {
       const cart = await axios.post(
-        process.env.REACT_APP_BASE_URL+"/cartitems",
+        process.env.REACT_APP_BASE_URL+"cartitems",
         selectedItem
       );
       if (cart.data) {

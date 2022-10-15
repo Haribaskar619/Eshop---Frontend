@@ -61,7 +61,7 @@ function Addproducts() {
        onSubmit: async (values,{resetForm}) => {
         console.log(values);
         try {
-            const createProductData = await axios.post( process.env.REACT_APP_BASE_URL+"/addproductdata",values,values.image = image);
+            const createProductData = await axios.post( process.env.REACT_APP_BASE_URL+"addproductdata",values,values.image = image);
             console.log(createProductData);
             if(createProductData){
               toast.success("New Product Added");

@@ -42,7 +42,7 @@ function Login() {
   });
   const googleAuth = async () => {
     // window("http://localhost:5000/auth/google")
-    window.open(process.env.REACT_APP_BASE_URL+"/auth/google", "_self")
+    window.open(process.env.REACT_APP_BASE_URL+"auth/google", "_self")
 }
 
   return (

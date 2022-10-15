@@ -47,7 +47,7 @@ function Cartitems() {
     try {
       const requireId = localStorage.getItem("user_id");
       axios
-        .get(`http://localhost:5000/cartitems`, {
+        .get(process.env.REACT_APP_BASE_URL+`/cartitems`, {
           params: {
             userid: requireId,
           },
@@ -70,7 +70,7 @@ function Cartitems() {
   const deleteFromCart = async (item, index) => {
     try {
       const deletedItem = await axios.delete(
-        `http://localhost:5000/cartitems/${item._id}`
+        process.env.REACT_APP_BASE_URL+`/cartitems/${item._id}`
       );
       // console.log(index)
       // if(deletedItem) {

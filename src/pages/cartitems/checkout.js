@@ -73,7 +73,7 @@ function Checkout() {
     };
     script.onload = async () => {
       try {
-        const order = await axios.post("http://localhost:5000/create-order", {
+        const order = await axios.post(process.env.REACT_APP_BASE_URL+"/create-order", {
           amount: location.state.totalamount * 100,
           currency: "INR",
         });
@@ -81,7 +81,7 @@ function Checkout() {
         const { amount, id: order_id, currency } = order.data;
         const {
           data: { key: razorpayKey },
-        } = await axios.get("http://localhost:5000/get-razorpay-key");
+        } = await axios.get(process.env.REACT_APP_BASE_URL+"/get-razorpay-key");
 
         const options = {
           key: razorpayKey,
@@ -103,7 +103,7 @@ function Checkout() {
               productIdArr.push(location.state.productdetails[0]._id);
             }
 
-            const result = await axios.post("http://localhost:5000/pay-order", {
+            const result = await axios.post(process.env.REACT_APP_BASE_URL+"/pay-order", {
               productid: productIdArr,
               amount: amount / 100,
               razorpayOrderId: response.razorpay_order_id,
@@ -115,7 +115,7 @@ function Checkout() {
             
             
             if (result) {
-              await axios.delete("http://localhost:5000/cartitems");
+              await axios.delete(process.env.REACT_APP_BASE_URL+"/cartitems");
             }
             navigate("/orderdetails", {
               state: {

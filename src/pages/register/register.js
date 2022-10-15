@@ -82,7 +82,7 @@ function Register() {
     validate,
     onSubmit: async (values) => {
       console.log(values);
-      await axios.post("http://localhost:5000/register", values).then((res) => {
+      await axios.post(process.env.REACT_APP_BASE_URL+"/register", values).then((res) => {
         console.log(res);
         if (res.data.err) {
           toast.error(

@@ -18,7 +18,7 @@ function Myorders() {
     try {
       
       axios
-        .get(`http://localhost:5000/order-list`)
+        .get(process.env.REACT_APP_BASE_URL+`/order-list`)
         .then((res) => {
           setOrders(res.data);
           console.log(res.data);
@@ -27,7 +27,7 @@ function Myorders() {
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/getproductdata")
+    axios.get(process.env.REACT_APP_BASE_URL+"/getproductdata")
       .then((res) => setProducts(res.data))
       .catch((error) => {throw new Error(error)});
   }, []);

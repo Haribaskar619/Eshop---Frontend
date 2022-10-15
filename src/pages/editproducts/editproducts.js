@@ -55,7 +55,7 @@ function Editproducts() {
       })
     }
       const updateProdData = async (id) => {
-        const isUpdated =  await axios.put(`http://localhost:5000/updateproductdata/${id}`,newdata,newdata.image = image).then((res)=>{
+        const isUpdated =  await axios.put(process.env.REACT_APP_BASE_URL+`/updateproductdata/${id}`,newdata,newdata.image = image).then((res)=>{
           setCounter(counter + 1);
         }).catch((err)=> {
           console.log(err);
@@ -74,7 +74,7 @@ function Editproducts() {
       }};
 
       const deleteProdData = async (id) => {
-        const isDeleted =  await axios.delete(`http://localhost:5000/delproductdata/${id}`).then((res)=>{
+        const isDeleted =  await axios.delete(process.env.REACT_APP_BASE_URL+`/delproductdata/${id}`).then((res)=>{
           console.log(res);
           setCounter(counter + 1);
         }).catch((err)=> {
@@ -86,7 +86,7 @@ function Editproducts() {
       }};
 
       const updateNewProdData = async (item) => {
-        await axios.get(`http://localhost:5000/getproddata/${item}`).then((res) => {
+        await axios.get(process.env.REACT_APP_BASE_URL+`/getproddata/${item}`).then((res) => {
           setNewdata({
             category: res.data.category,
             description:res.data.description,
@@ -103,7 +103,7 @@ function Editproducts() {
       }
   
     useEffect(() => {
-          axios.get("http://localhost:5000/getproductdata").then((res) => {
+          axios.get(process.env.REACT_APP_BASE_URL+"/getproductdata").then((res) => {
             setDatas(res.data);
           })      
       }, [counter])

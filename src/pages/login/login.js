@@ -19,7 +19,7 @@ function Login() {
 
     onSubmit: async (values) => {
       console.log(values);
-      await axios.post("http://localhost:5000/login", values)
+      await axios.post(process.env.REACT_APP_BASE_URL+"/login", values)
         .then((res) => {
           console.log(res);
           window.localStorage.setItem("app_token", res.data[0].token);

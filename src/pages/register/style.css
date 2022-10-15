@@ -1,0 +1,10 @@
+#regwrap{
+    border: 20px solid black;
+}
+
+#regHead{
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: larger;
+}
